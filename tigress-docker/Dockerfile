@@ -7,8 +7,8 @@ RUN echo 'user:user' | chpasswd
 
 FROM base
 RUN apt update && apt install gcc unzip libdata-dumper-concise-perl libc6-dev-i386 -y
-RUN --mount=type=bind,src=./tigress-Linux-x86_64-unstable.zip,target=/opt/tigress-Linux-x86_64-unstable.zip \
-    unzip /opt/tigress-Linux-x86_64-unstable.zip -d /opt/
+ADD ./tigress-Linux-x86_64-unstable.zip /opt/
+RUN unzip /opt/tigress-Linux-x86_64-unstable.zip -d /opt/
 RUN chown -R user:user /opt/tigress-unstable
 
 USER user

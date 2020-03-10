@@ -17,10 +17,12 @@ cd $FILES_DIR/obfuscator
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_INCLUDE_TESTS=OFF ..
-make -j$((`nproc` / 2))
+NUM_JOBS=$((`nproc`/2 ))
+make -j$(( NUM_JOBS > 1 ? NUM_JOBS : 1 ))
 sudo make install
 
 # pip
+sudo apt install curl python3-distutils python3-testresources -y
 cd /tmp
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
@@ -39,7 +41,7 @@ sudo python3 setup.py install
 
 # docker
 ## https://docs.docker.com/install/linux/docker-ce/ubuntu/
-sudo apt-get install \
+sudo apt install \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -50,16 +52,10 @@ sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io -y
 
 # tigress
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-sudo apt-get install docker-ce docker-ce-cli containerd.io
 cd $FILES_DIR/tigress-docker
 export DOCKER_BUILDKIT=1
 sudo docker build . -t tigress-docker
-

@@ -34,7 +34,7 @@ pip install notebook future networkx z3-solver pyparsing pydotplus
 # miasm
 ## as of fc6bb3ce49ea44012a762b207a39301825e9648a
 git clone https://github.com/cea-sec/miasm $FILES_DIR/miasm
-sudo apt install python3 libpython3-dev python3-distutils -y
+sudo apt install python3 libpython3-dev python3-distutils graphviz jupyter-notebook -y
 cd $FILES_DIR/miasm
 python3 setup.py build
 sudo python3 setup.py install
@@ -59,3 +59,4 @@ sudo apt install docker-ce docker-ce-cli containerd.io -y
 cd $FILES_DIR/tigress-docker
 export DOCKER_BUILDKIT=1
 sudo docker build . -t tigress-docker
+

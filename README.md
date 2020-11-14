@@ -1,6 +1,6 @@
 # Advanced Binary Deobfuscation
 
-This repository contains the course materials of Advanced Binary Deobfuscation at the [Global Cybersecurity Camp (GCC) Tokyo](https://www.security-camp.or.jp/event/gcc_tokyo_program.html) in 2020.
+This repository contains the course materials of Advanced Binary Deobfuscation at the [Global Cybersecurity Camp (GCC) Tokyo](https://www.security-camp.or.jp/event/gcc_tokyo_program.html) and the [Security Camp National Workshop](https://www.security-camp.or.jp/camp/index.html) in 2020.
 
 ## Course Abstract
 
